@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gym PRO — The Future of Fitness Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+:root{
+  --orange:#FF4D00;
+  --orange-dim:#cc3d00;
+  --orange-glow:rgba(255,77,0,0.18);
+  --black:#080808;
+  --black2:#111;
+  --black3:#1a1a1a;
+  --white:#f5f5f5;
+  --grey:#888;
+  --border:rgba(255,77,0,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:none}
+
+/* CUSTOM CURSOR */
+.cursor{position:fixed;width:12px;height:12px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.2s,height 0.2s}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--orange);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.12s,width 0.2s,height 0.2s,opacity 0.2s;opacity:0.5}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgba(8,8,8,0.85);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--white)}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{background:var(--orange);color:#fff;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;border-radius:3px;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--orange-dim)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 60px 80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 70% 50%,rgba(255,77,0,0.12) 0%,transparent 70%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,77,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,77,0,0.04) 1px,transparent 1px);background-size:60px 60px;opacity:0.6}
+.hero-noise{position:absolute;inset:0;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:2;max-width:700px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:24px;border:1px solid var(--border);padding:6px 14px;border-radius:2px}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,9vw,110px);line-height:0.92;letter-spacing:2px;margin-bottom:28px}
+h1 .orange{color:var(--orange)}
+h1 .outline{-webkit-text-stroke:1.5px var(--white);color:transparent}
+.hero-sub{font-size:17px;font-weight:300;color:rgba(245,245,245,0.65);line-height:1.7;max-width:520px;margin-bottom:40px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:#fff;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 30px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-primary:hover{background:var(--orange-dim);transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(245,245,245,0.2);color:var(--white);font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:14px 30px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
+.hero-stats{display:flex;gap:48px;margin-top:60px;padding-top:40px;border-top:0.5px solid var(--border)}
+.hstat-num{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--orange);line-height:1}
+.hstat-label{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);margin-top:4px}
+.hero-visual{position:absolute;right:40px;top:50%;transform:translateY(-50%);width:360px;display:flex;flex-direction:column;gap:12px;z-index:2}
+.hv-card{background:rgba(26,26,26,0.9);border:0.5px solid var(--border);border-radius:8px;padding:18px 20px;backdrop-filter:blur(8px)}
+.hv-card-title{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.predict-bars{display:flex;align-items:flex-end;gap:8px;height:60px}
+.pb{border-radius:3px 3px 0 0;flex:1;transition:height 0.3s}
+.pb-now{background:#222;height:75%}
+.pb-m1{background:#3d1a00;height:65%}
+.pb-m2{background:#7a3300;height:52%}
+.pb-m3{background:var(--orange);height:38%;animation:barGlow 2s infinite alternate}
+@keyframes barGlow{from{box-shadow:0 0 0 transparent}to{box-shadow:0 0 16px rgba(255,77,0,0.5)}}
+.pb-labels{display:flex;gap:8px;margin-top:6px}
+.pb-labels span{flex:1;text-align:center;font-size:10px;color:var(--grey);font-weight:500}
+.nutri-msg{display:flex;gap:10px;align-items:flex-start;margin-top:8px}
+.nutri-avatar{width:28px;height:28px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.nutri-bubble{background:rgba(255,77,0,0.1);border:0.5px solid var(--border);border-radius:0 8px 8px 8px;padding:8px 12px;font-size:12px;color:rgba(245,245,245,0.8);line-height:1.5}
+.nutri-typing{display:flex;gap:3px;align-items:center;margin-top:6px;margin-left:38px}
+.nutri-typing span{width:5px;height:5px;border-radius:50%;background:var(--orange);animation:typing 1.2s infinite}
+.nutri-typing span:nth-child(2){animation-delay:0.2s}
+.nutri-typing span:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,100%{opacity:0.3;transform:scale(0.8)}50%{opacity:1;transform:scale(1.1)}}
+
+/* SECTION COMMONS */
+section{padding:100px 60px}
+.section-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,60px);letter-spacing:1px;line-height:1;margin-bottom:16px}
+.section-sub{font-size:15px;font-weight:300;color:rgba(245,245,245,0.55);line-height:1.7;max-width:560px}
+.divider-line{height:0.5px;background:linear-gradient(90deg,var(--orange),transparent);margin-bottom:60px;width:100%}
+
+/* WHY DIFFERENT */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px}
+.why-block{background:var(--black2);padding:40px;position:relative;overflow:hidden;transition:background 0.3s}
+.why-block:hover{background:var(--black3)}
+.why-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.why-block:hover::before{transform:scaleX(1)}
+.why-num{font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(255,77,0,0.06);position:absolute;top:-10px;right:20px;line-height:1}
+.why-icon{font-size:28px;color:var(--orange);margin-bottom:16px}
+.why-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.why-desc{font-size:14px;font-weight:300;color:rgba(245,245,245,0.6);line-height:1.7}
+.why-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);border:1px solid var(--border);padding:3px 10px;border-radius:2px;margin-top:14px}
+
+/* ML FEATURE */
+.ml-section{background:var(--black2);position:relative;overflow:hidden}
+.ml-section::before{content:'';position:absolute;right:-100px;top:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,0,0.08) 0%,transparent 70%)}
+.ml-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:60px}
+.ml-visual{background:var(--black3);border:0.5px solid var(--border);border-radius:8px;padding:28px;position:relative}
+.ml-step{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;padding-bottom:20px;border-bottom:0.5px solid rgba(255,77,0,0.08)}
+.ml-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.ml-step-num{width:28px;height:28px;border-radius:50%;background:var(--orange);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ml-step-title{font-size:13px;font-weight:600;letter-spacing:0.5px;margin-bottom:4px}
+.ml-step-desc{font-size:12px;color:var(--grey);line-height:1.6}
+.ml-step-code{font-size:11px;font-family:monospace;background:rgba(255,77,0,0.08);color:var(--orange);padding:4px 8px;border-radius:3px;margin-top:6px;display:inline-block}
+.accuracy-bar-wrap{margin-top:24px}
+.acc-label{display:flex;justify-content:space-between;font-size:12px;color:var(--grey);margin-bottom:6px}
+.acc-bar{height:6px;background:#222;border-radius:3px;overflow:hidden;margin-bottom:12px}
+.acc-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--orange-dim),var(--orange));animation:fillBar 2s ease forwards}
+@keyframes fillBar{from{width:0}to{width:var(--w)}}
+
+/* NUTRI AI */
+.nutri-section{position:relative;overflow:hidden}
+.nutri-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:60px}
+.chat-window{background:var(--black2);border:0.5px solid var(--border);border-radius:12px;overflow:hidden}
+.chat-header{background:var(--black3);padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:0.5px solid var(--border)}
+.chat-avatar{width:36px;height:36px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:16px}
+.chat-name{font-size:14px;font-weight:600}
+.chat-status{font-size:11px;color:var(--orange);display:flex;align-items:center;gap:4px}
+.chat-status::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--orange)}
+.chat-body{padding:20px;display:flex;flex-direction:column;gap:14px;min-height:280px}
+.msg{max-width:80%;padding:10px 14px;border-radius:8px;font-size:13px;line-height:1.6}
+.msg-ai{background:rgba(255,77,0,0.1);border:0.5px solid var(--border);border-radius:0 8px 8px 8px;align-self:flex-start}
+.msg-user{background:#222;border-radius:8px 0 8px 8px;align-self:flex-end;color:rgba(245,245,245,0.8)}
+.msg-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+.chat-input{display:flex;gap:0;border-top:0.5px solid var(--border)}
+.chat-input input{flex:1;background:transparent;border:none;outline:none;padding:14px 18px;font-size:13px;color:var(--white);font-family:'Barlow',sans-serif}
+.chat-send{background:var(--orange);border:none;padding:14px 18px;color:#fff;font-size:18px;cursor:pointer}
+.nutri-features{display:flex;flex-direction:column;gap:20px}
+.nf-item{display:flex;gap:16px;align-items:flex-start}
+.nf-icon{width:40px;height:40px;border-radius:6px;background:rgba(255,77,0,0.1);border:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--orange);flex-shrink:0}
+.nf-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.nf-desc{font-size:13px;color:var(--grey);line-height:1.6}
+
+/* TRAINER ASSESSMENT */
+.stats-section{background:var(--black2)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.stat-block{background:var(--black3);padding:36px 30px;text-align:center;position:relative;overflow:hidden}
+.stat-block::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:40px;height:2px;background:var(--orange)}
+.stat-big{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--orange);line-height:1}
+.stat-label2{font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);margin-top:6px}
+.assessment-card{background:var(--black3);border:0.5px solid var(--border);border-radius:8px;padding:28px;margin-top:40px}
+.ac-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.ac-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.ac-badge{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:2px}
+.badge-agree{background:rgba(0,200,100,0.15);color:#00c864;border:1px solid rgba(0,200,100,0.3)}
+.badge-slight{background:rgba(255,200,0,0.15);color:#ffc800;border:1px solid rgba(255,200,0,0.3)}
+.badge-disagree{background:rgba(255,77,0,0.15);color:var(--orange);border:1px solid var(--border)}
+.trainer-row{display:flex;align-items:center;gap:16px;margin-bottom:16px;padding-bottom:16px;border-bottom:0.5px solid rgba(255,77,0,0.06)}
+.trainer-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.trainer-ava{width:36px;height:36px;border-radius:50%;background:var(--black2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px}
+.trainer-name{font-size:13px;font-weight:500;flex:1}
+.trainer-score{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--orange)}
+.trainer-sd{font-size:11px;color:var(--grey)}
+.sd-bar{flex:2;height:4px;background:#222;border-radius:2px;overflow:hidden}
+.sd-fill{height:100%;border-radius:2px}
+
+/* TRAINER PROFILES */
+.profiles-section{}
+.profiles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:60px}
+.profile-card{background:var(--black2);border:0.5px solid var(--border);border-radius:8px;overflow:hidden;transition:transform 0.3s,border-color 0.3s}
+.profile-card:hover{transform:translateY(-6px);border-color:var(--orange)}
+.profile-img{height:200px;background:var(--black3);display:flex;align-items:center;justify-content:center;font-size:64px;position:relative;overflow:hidden}
+.profile-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(transparent,var(--black2))}
+.senior-badge{position:absolute;top:14px;left:14px;background:var(--orange);color:#fff;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:2px;z-index:1}
+.profile-body{padding:20px}
+.profile-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.profile-role{font-size:12px;color:var(--orange);font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.profile-spec{font-size:13px;color:var(--grey);line-height:1.6;margin-bottom:14px}
+.profile-stats{display:flex;gap:16px}
+.ps-item{text-align:center}
+.ps-num{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white)}
+.ps-label{font-size:10px;color:var(--grey);text-transform:uppercase;letter-spacing:1px}
+
+/* FEATURES GRID */
+.features-section{background:var(--black2)}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;margin-top:60px}
+.feat-tile{background:var(--black3);padding:32px 26px;position:relative;overflow:hidden;cursor:pointer;transition:background 0.3s}
+.feat-tile:hover{background:rgba(255,77,0,0.06)}
+.feat-tile:hover .feat-arrow{opacity:1;transform:translateX(0)}
+.feat-glow{position:absolute;top:-40px;right:-40px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,0,0.1) 0%,transparent 70%);opacity:0;transition:opacity 0.3s}
+.feat-tile:hover .feat-glow{opacity:1}
+.feat-icon2{width:52px;height:52px;border-radius:10px;background:rgba(255,77,0,0.1);border:1px solid rgba(255,77,0,0.2);display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--orange);margin-bottom:20px;transition:background 0.3s,border-color 0.3s}
+.feat-tile:hover .feat-icon2{background:rgba(255,77,0,0.18);border-color:rgba(255,77,0,0.4)}
+.feat-title2{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.feat-desc2{font-size:13px;color:var(--grey);line-height:1.6}
+.feat-arrow{font-size:20px;color:var(--orange);margin-top:16px;opacity:0;transform:translateX(-8px);transition:all 0.3s;display:block}
+
+/* VIDEO SECTION */
+.video-section{position:relative;overflow:hidden}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
+.video-tile{border-radius:8px;overflow:hidden;position:relative;aspect-ratio:9/16;background:var(--black2);border:0.5px solid var(--border);cursor:pointer;transition:transform 0.3s}
+.video-tile:hover{transform:scale(1.02)}
+.video-tile:first-child{grid-row:span 2;aspect-ratio:auto}
+.video-thumb{width:100%;height:100%;object-fit:cover;display:flex;align-items:center;justify-content:center;background:var(--black3);flex-direction:column;gap:12px;min-height:200px}
+.play-btn{width:56px;height:56px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;transition:transform 0.2s}
+.video-tile:hover .play-btn{transform:scale(1.1)}
+.video-label{font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--grey)}
+.video-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(8,8,8,0.9))}
+.video-overlay-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.video-overlay-sub{font-size:11px;color:var(--grey)}
+
+/* BIRTHDAY */
+.birthday-section{background:var(--black2);text-align:center;position:relative;overflow:hidden}
+.birthday-section::before{content:'🎂';font-size:200px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.03}
+.confetti-wrap{position:absolute;inset:0;pointer-events:none}
+.bday-card{background:var(--black3);border:0.5px solid var(--border);border-radius:12px;padding:40px;display:inline-block;margin-top:40px;position:relative;overflow:hidden}
+.bday-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,77,0,0.05) 0%,transparent 70%)}
+.bday-emoji{font-size:48px;margin-bottom:16px}
+.bday-title{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--orange);letter-spacing:2px;margin-bottom:8px}
+.bday-sub{font-size:15px;color:var(--grey);max-width:400px;margin:0 auto;line-height:1.6}
+.bday-members{display:flex;justify-content:center;gap:-10px;margin-top:24px}
+.bday-ava{width:40px;height:40px;border-radius:50%;background:var(--black2);border:2px solid var(--black3);display:flex;align-items:center;justify-content:center;font-size:18px;margin-left:-8px}
+.bday-ava:first-child{margin-left:0}
+
+/* SHOPPING & BOOKING */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
+.service-card{background:var(--black2);border:0.5px solid var(--border);border-radius:8px;padding:32px 26px;position:relative;overflow:hidden;transition:all 0.3s}
+.service-card:hover{border-color:var(--orange);transform:translateY(-4px)}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform 0.3s;transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{font-size:36px;color:var(--orange);margin-bottom:20px}
+.service-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.service-desc{font-size:13px;color:var(--grey);line-height:1.7;margin-bottom:20px}
+.service-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);text-decoration:none}
+
+/* CTA FINAL */
+.cta-final{background:var(--orange);position:relative;overflow:hidden;text-align:center;padding:100px 60px}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,255,255,0.05) 0%,transparent 60%)}
+.cta-final h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);color:#fff;letter-spacing:2px;line-height:0.95;margin-bottom:20px}
+.cta-final p{font-size:16px;color:rgba(255,255,255,0.75);max-width:500px;margin:0 auto 40px;line-height:1.7}
+.btn-white{background:#fff;color:var(--orange);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.2)}
+
+/* FOOTER */
+footer{background:var(--black);border-top:0.5px solid var(--border);padding:40px 60px;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px}
+.footer-logo span{color:var(--orange)}
+.footer-copy{font-size:12px;color:var(--grey)}
+
+/* SCROLL ANIMATION */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* WORKOUT RECOMMENDATION SECTION */
+.workout-rec-section{background:var(--black);position:relative;overflow:hidden}
+.workout-rec-section::before{content:'';position:absolute;left:-100px;bottom:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,0,0.06) 0%,transparent 70%)}
+.wr-type-card{background:var(--black3);border:0.5px solid var(--border);border-radius:8px;padding:16px;transition:all 0.3s;cursor:default}
+.wr-type-card.wr-active{border-color:var(--orange);background:rgba(255,77,0,0.08)}
+.wr-type-icon{font-size:22px;color:var(--orange);margin-bottom:6px}
+.wr-type-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.wr-type-tag{font-size:10px;color:var(--grey);letter-spacing:0.5px}
+.wr-exercise-row{display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:0.5px solid rgba(255,77,0,0.07);color:rgba(245,245,245,0.75)}
+.wr-exercise-row span:last-child{color:var(--orange);font-weight:600;font-size:11px;letter-spacing:0.5px}
+
+/* ENHANCED SERVICE CARDS */
+.service-card-v2{background:var(--black2);border:0.5px solid var(--border);border-radius:10px;overflow:hidden;transition:all 0.3s;position:relative}
+.service-card-v2:hover{border-color:var(--orange);transform:translateY(-5px);box-shadow:0 12px 40px rgba(255,77,0,0.12)}
+.service-card-v2::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform 0.3s;transform-origin:left;z-index:1}
+.service-card-v2:hover::before{transform:scaleX(1)}
+.sc2-img{width:100%;height:220px;object-fit:cover;display:block;background:var(--black3)}
+.sc2-img-placeholder{width:100%;height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,var(--black3) 0%,#1f0d00 100%);position:relative;overflow:hidden}
+.sc2-img-placeholder::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(255,77,0,0.1) 0%,transparent 70%)}
+.sc2-img-icon{font-size:52px;color:var(--orange);opacity:0.7;z-index:1}
+.sc2-img-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(245,245,245,0.3);z-index:1}
+.sc2-body{padding:26px 26px 28px}
+.sc2-icon-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sc2-icon{width:38px;height:38px;border-radius:8px;background:rgba(255,77,0,0.12);border:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--orange);flex-shrink:0}
+.sc2-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.sc2-desc{font-size:13px;color:var(--grey);line-height:1.75;margin-bottom:20px}
+.sc2-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);text-decoration:none;padding:9px 18px;border:1px solid var(--border);border-radius:3px;transition:all 0.2s}
+.sc2-btn:hover{background:rgba(255,77,0,0.1);border-color:var(--orange)}
+
+/* HERO PHONE POPUP */
+
+/* LIVE DEMO AREAS */
+.live-demo-wrap{margin-top:48px;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--black2)}
+.live-demo-header{display:flex;align-items:center;gap:10px;padding:14px 22px;background:var(--black3);border-bottom:0.5px solid var(--border)}
+.live-demo-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse 1.5s infinite}
+.live-demo-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange)}
+.live-demo-sublabel{font-size:11px;color:var(--grey);margin-left:auto}
+.video-demo-slot{position:relative;width:100%;aspect-ratio:16/9;background:#0d0d0d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:260px}
+.video-demo-slot iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.video-demo-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;width:100%;height:100%;min-height:260px;background:linear-gradient(135deg,#0d0d0d 0%,#1a0a00 100%)}
+.vdp-icon{width:64px;height:64px;border-radius:50%;background:rgba(255,77,0,0.15);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--orange)}
+.vdp-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(245,245,245,0.5)}
+.vdp-hint{font-size:11px;color:rgba(245,245,245,0.25);letter-spacing:1px;text-transform:uppercase}
+
+/* FLOATING BADGE */
+.float-badge{position:fixed;bottom:30px;right:30px;background:var(--orange);color:#fff;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 18px;border-radius:30px;z-index:50;display:flex;align-items:center;gap:6px;box-shadow:0 4px 20px rgba(255,77,0,0.4);animation:floatBadge 3s ease-in-out infinite}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  .hero{padding:100px 24px 60px;flex-direction:column}
+  .hero-visual{display:none}
+  section{padding:60px 24px}
+  .why-grid,.ml-grid,.nutri-wrap,.stats-grid,.services-grid,.video-grid{grid-template-columns:1fr}
+  .hero-stats{gap:24px}
+  footer{flex-direction:column;gap:16px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- FLOATING BADGE -->
+<div class="float-badge"><i class="ti ti-bolt"></i> Live Demo Available</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">GYM<span>PRO</span></div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#ml">ML Engine</a></li>
+    <li><a href="#workouts">Workouts</a></li>
+    <li><a href="#trainers">Trainers</a></li>
+    <li><a href="#shop">Services</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Get Access</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow"><span></span> AI-Powered Fitness Intelligence</div>
+    <h1>See Your<br><span class="orange">Future</span><br><span class="outline">Body.</span><br>Now.</h1>
+    <p class="hero-sub">Gym PRO uses machine learning to predict your physique transformation months before it happens — so you stay committed, informed, and in control of your results.</p>
+    <div class="hero-btns">
+      <a href="#features" class="btn-primary"><i class="ti ti-bolt"></i> Explore the Platform</a>
+      <a href="#ml" class="btn-ghost"><i class="ti ti-cpu"></i> See the ML Engine</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hstat-num">4</div><div class="hstat-label">ML Models</div></div>
+      <div><div class="hstat-num">300</div><div class="hstat-label">Boosting Trees</div></div>
+      <div><div class="hstat-num">3</div><div class="hstat-label">User Levels</div></div>
+      <div><div class="hstat-num">1</div><div class="hstat-label">Click Away</div></div>
+    </div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="hv-card">
+      <div class="hv-card-title"><i class="ti ti-chart-bar"></i> Body Transformation Forecast</div>
+      <div class="predict-bars">
+        <div class="pb pb-now"></div>
+        <div class="pb pb-m1"></div>
+        <div class="pb pb-m2"></div>
+        <div class="pb pb-m3"></div>
+      </div>
+      <div class="pb-labels">
+        <span>Now</span><span>Mo.1</span><span>Mo.2</span><span>Mo.3 🔥</span>
+      </div>
+    </div>
+    <div class="hv-card">
+      <div class="hv-card-title"><i class="ti ti-robot"></i> NutriAI — Live</div>
+      <div class="nutri-msg">
+        <div class="nutri-avatar">🤖</div>
+        <div>
+          <div class="nutri-bubble">Based on your 520 cal burn today, I recommend a high-protein meal: grilled chicken, brown rice & steamed broccoli — 640 kcal.</div>
+        </div>
+      </div>
+      <div class="nutri-typing"><span></span><span></span><span></span></div>
+    </div>
+    <div class="hv-card">
+      <div class="hv-card-title"><i class="ti ti-activity"></i> Live Calorie Prediction</div>
+      <div class="accuracy-bar-wrap">
+        <div class="acc-label"><span>Calorie Model Accuracy</span><span>R² 0.94</span></div>
+        <div class="acc-bar"><div class="acc-fill" style="--w:94%"></div></div>
+        <div class="acc-label"><span>Weight Forecast</span><span>R² 0.91</span></div>
+        <div class="acc-bar"><div class="acc-fill" style="--w:91%"></div></div>
+        <div class="acc-label"><span>Fat % Prediction</span><span>R² 0.89</span></div>
+        <div class="acc-bar"><div class="acc-fill" style="--w:89%"></div></div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+<!-- WHY DIFFERENT -->
+<section id="features" style="padding-top:0">
+  <div class="divider-line"></div>
+  <div class="reveal">
+    <div class="section-tag">Why Gym PRO</div>
+    <div class="section-title">Not Just Another<br>Fitness App</div>
+    <p class="section-sub">We built the digital infrastructure for modern fitness — combining expert-level prescription with machine learning forecasting.</p>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-block">
+      <div class="why-num">01</div>
+      <div class="why-icon"><i class="ti ti-brain"></i></div>
+      <div class="why-title">Prediction, Not Classification</div>
+      <div class="why-desc">A simple classifier tells you what category you're in. Our GradientBoostingRegressor tells you exactly where your weight, BMI, and body fat will be in 30, 60, and 90 days — personalized to your data.</div>
+      <span class="why-tag">ML Regression · 300 Estimators</span>
+    </div>
+    <div class="why-block">
+      <div class="why-num">02</div>
+      <div class="why-icon"><i class="ti ti-hybrid-off"></i></div>
+      <div class="why-title">Hybrid Rule + ML Architecture</div>
+      <div class="why-desc">Pure ML classifiers achieve only ~25% accuracy on self-selected behavioral data. We use deterministic rule engines for workout prescription and ML for outcome forecasting — each method in its zone of strength.</div>
+      <span class="why-tag">Expert Rules · Supervised Learning</span>
+    </div>
+    <div class="why-block">
+      <div class="why-num">03</div>
+      <div class="why-icon"><i class="ti ti-device-analytics"></i></div>
+      <div class="why-title">Scientific Trainer Assessment</div>
+      <div class="why-desc">Trainer quality scored via weighted mean average combined with standard deviation — objectively indicating whether trainers Agree, Slightly Disagree, or Disagree with quality benchmarks.</div>
+      <span class="why-tag">Weighted Mean · Std Deviation</span>
+    </div>
+    <div class="why-block">
+      <div class="why-num">04</div>
+      <div class="why-icon"><i class="ti ti-topology-star"></i></div>
+      <div class="why-title">Full Digital Ecosystem</div>
+      <div class="why-desc">Members. Trainers. Admins. One platform. From body prediction to shopping for gym essentials, booking consultations, and AI nutritional guidance — it's a lifestyle platform, not a feature list.</div>
+      <span class="why-tag">3 User Levels · 1 Platform</span>
+    </div>
+  </div>
+
+  <!-- LIVE DEMO AREA -->
+  <div class="live-demo-wrap reveal" style="margin-top:16px">
+    <div class="live-demo-header">
+      <div class="live-demo-dot"></div>
+      <span class="live-demo-label">Live Demo — Platform Overview</span>
+      <span class="live-demo-sublabel">Replace src with your video URL</span>
+    </div>
+    <div class="video-demo-slot">
+      <!-- SWAP THIS: <iframe src="https://www.youtube.com/embed/YOUR_OVERVIEW_ID" allowfullscreen></iframe> -->
+      <div class="video-demo-placeholder">
+        <div class="vdp-icon"><i class="ti ti-layout-dashboard"></i></div>
+        <div class="vdp-title">Platform Overview — Demo</div>
+        <div class="vdp-hint">Insert video embed here</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section id="ml" class="ml-section">
+  <div class="reveal">
+    <div class="section-tag">ML Engine</div>
+    <div class="section-title">How The Prediction<br>System Works</div>
+    <p class="section-sub">Two Kaggle datasets. Four models. 300 trees each. Built to predict your body — not guess it.</p>
+  </div>
+  <div class="ml-grid reveal">
+    <div>
+      <div class="ml-step">
+        <div class="ml-step-num">1</div>
+        <div>
+          <div class="ml-step-title">Data Collection & Merging</div>
+          <div class="ml-step-desc">Two Kaggle datasets — gym session activity and body fitness metrics — cleaned, deduplicated, and merged on a shared member ID into one labeled dataset.</div>
+          <span class="ml-step-code">pd.merge(gym_df, fitness_df, on='member_id')</span>
+        </div>
+      </div>
+      <div class="ml-step">
+        <div class="ml-step-num">2</div>
+        <div>
+          <div class="ml-step-title">Cleaning & Feature Engineering</div>
+          <div class="ml-step-desc">Nulls dropped, duplicates removed, columns standardized. BMI calculated from height/weight. Session frequency and weekly caloric averages derived as model inputs.</div>
+          <span class="ml-step-code">StandardScaler · dropna · feature_engineering()</span>
+        </div>
+      </div>
+      <div class="ml-step">
+        <div class="ml-step-num">3</div>
+        <div>
+          <div class="ml-step-title">80/20 Train-Test Split</div>
+          <div class="ml-step-desc">80% of labeled data trains the models. 20% is held out for evaluation — scored using MAE (average error in real units) and R² (how well the model fits the data).</div>
+          <span class="ml-step-code">train_test_split(test_size=0.2, random_state=42)</span>
+        </div>
+      </div>
+      <div class="ml-step">
+        <div class="ml-step-num">4</div>
+        <div>
+          <div class="ml-step-title">4 Independent Models Trained</div>
+          <div class="ml-step-desc">One model per target: Calories Burned, Future Weight, Future BMI, Future Fat %. Each runs 300 boosting iterations at a conservative 0.05 learning rate to prevent overfitting.</div>
+          <span class="ml-step-code">GradientBoostingRegressor(n_estimators=300, lr=0.05)</span>
+        </div>
+      </div>
+      <div class="ml-step">
+        <div class="ml-step-num">5</div>
+        <div>
+          <div class="ml-step-title">Rule Engine + ML Output</div>
+          <div class="ml-step-desc">Workout category assigned via BMI + goal rule table. ML predictions layered on top — producing a complete, personalized fitness prescription and outcome forecast.</div>
+          <span class="ml-step-code">BMI_RULES.get((bmi_cat, goal)) → GBR.predict()</span>
+        </div>
+      </div>
+    </div>
+    <div class="ml-visual">
+      <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:20px">Model Performance</div>
+      <div class="acc-label"><span>Calorie Prediction (train_workout.py)</span><span style="color:var(--orange)">R² 0.94</span></div>
+      <div class="acc-bar" style="margin-bottom:20px"><div class="acc-fill" style="--w:94%"></div></div>
+      <div class="acc-label"><span>Weight Forecast (train_progress.py)</span><span style="color:var(--orange)">R² 0.91</span></div>
+      <div class="acc-bar" style="margin-bottom:20px"><div class="acc-fill" style="--w:91%"></div></div>
+      <div class="acc-label"><span>BMI Prediction</span><span style="color:var(--orange)">R² 0.90</span></div>
+      <div class="acc-bar" style="margin-bottom:20px"><div class="acc-fill" style="--w:90%"></div></div>
+      <div class="acc-label"><span>Body Fat % Prediction</span><span style="color:var(--orange)">R² 0.89</span></div>
+      <div class="acc-bar" style="margin-bottom:32px"><div class="acc-fill" style="--w:89%"></div></div>
+      <div style="background:rgba(255,77,0,0.06);border:0.5px solid var(--border);border-radius:6px;padding:16px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:10px">Why Not a Classifier?</div>
+        <div style="font-size:13px;color:rgba(245,245,245,0.6);line-height:1.7">A classifier achieves only ~25% accuracy on self-selected behavioral gym data — equivalent to random chance across 4 classes. Regression models trained on labeled continuous data deliver measurable, personalized, time-series forecasts.</div>
+      </div>
+      <div style="margin-top:20px;background:rgba(255,77,0,0.06);border:0.5px solid var(--border);border-radius:6px;padding:16px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:10px">Supervised Learning Framework</div>
+        <div style="font-size:13px;color:rgba(245,245,245,0.6);line-height:1.7">All four models operate under supervised learning — trained on labeled Kaggle data where every input has a known target output. Gradient Boosting is the ensemble algorithm executing within that framework.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO DEMO: Calorie Prediction -->
+  <div class="live-demo-wrap reveal">
+    <div class="live-demo-header">
+      <div class="live-demo-dot"></div>
+      <span class="live-demo-label">Live Demo — Calorie Prediction</span>
+      <span class="live-demo-sublabel">Replace src with your video URL</span>
+    </div>
+    <div class="video-demo-slot">
+      <!-- SWAP THIS: <iframe src="https://www.youtube.com/embed/YOUR_CALORIE_ID" allowfullscreen></iframe> -->
+      <div class="video-demo-placeholder">
+        <div class="vdp-icon"><i class="ti ti-activity"></i></div>
+        <div class="vdp-title">Calorie Prediction — Demo</div>
+        <div class="vdp-hint">Insert video embed here</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- WORKOUT RECOMMENDATION -->
+<section id="workouts" class="workout-rec-section">
+  <div class="reveal">
+    <div class="section-tag">ML-Powered Prescriptions</div>
+    <div class="section-title">Your Workout.<br><span style="color:var(--orange)">Engineered</span> By Data.</div>
+    <p class="section-sub">Gym PRO's rule engine maps your BMI category and fitness goal to a precisely tailored workout plan — then layers ML calorie predictions on top so every session is optimised for your body.</p>
+  </div>
+  <div class="ml-grid reveal" style="margin-top:60px">
+    <div>
+      <div class="ml-step">
+        <div class="ml-step-num">1</div>
+        <div>
+          <div class="ml-step-title">BMI + Goal Input</div>
+          <div class="ml-step-desc">Member's current BMI category (Underweight / Normal / Overweight / Obese) and selected goal (Fat Loss · Muscle Gain · Endurance · Maintenance) are captured on profile setup.</div>
+          <span class="ml-step-code">bmi_cat = classify_bmi(weight, height)</span>
+        </div>
+      </div>
+      <div class="ml-step">
+        <div class="ml-step-num">2</div>
+        <div>
+          <div class="ml-step-title">Deterministic Rule Lookup</div>
+          <div class="ml-step-desc">A weighted rule table maps every BMI × goal combination to the optimal workout type — HIIT, Strength, Cardio, or Functional — removing the ambiguity of pure ML on behavioural data.</div>
+          <span class="ml-step-code">workout = BMI_RULES[(bmi_cat, goal)]</span>
+        </div>
+      </div>
+      <div class="ml-step">
+        <div class="ml-step-num">3</div>
+        <div>
+          <div class="ml-step-title">ML Calorie Layer</div>
+          <div class="ml-step-desc">The GradientBoostingRegressor (R² 0.94) predicts exact calories burned for the prescribed session — giving members a real number, not an estimate, before they even start.</div>
+          <span class="ml-step-code">predicted_kcal = calorie_model.predict(features)</span>
+        </div>
+      </div>
+      <div class="ml-step">
+        <div class="ml-step-num">4</div>
+        <div>
+          <div class="ml-step-title">Personalised Plan Delivered</div>
+          <div class="ml-step-desc">A complete, session-ready workout plan — sets, reps, rest periods, and expected calorie burn — is pushed to the member's dashboard and synced with NutriAI for post-workout nutrition.</div>
+          <span class="ml-step-code">dashboard.push(plan, predicted_kcal)</span>
+        </div>
+      </div>
+    </div>
+    <div class="ml-visual">
+      <div style="font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:20px">Sample Prescription Output</div>
+
+      <!-- Workout type grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px">
+        <div class="wr-type-card wr-active">
+          <div class="wr-type-icon"><i class="ti ti-flame"></i></div>
+          <div class="wr-type-name">HIIT</div>
+          <div class="wr-type-tag">Fat Loss · Overweight</div>
+        </div>
+        <div class="wr-type-card">
+          <div class="wr-type-icon"><i class="ti ti-barbell"></i></div>
+          <div class="wr-type-name">Strength</div>
+          <div class="wr-type-tag">Muscle Gain · Normal</div>
+        </div>
+        <div class="wr-type-card">
+          <div class="wr-type-icon"><i class="ti ti-run"></i></div>
+          <div class="wr-type-name">Cardio</div>
+          <div class="wr-type-tag">Endurance · Any BMI</div>
+        </div>
+        <div class="wr-type-card">
+          <div class="wr-type-icon"><i class="ti ti-yoga"></i></div>
+          <div class="wr-type-name">Functional</div>
+          <div class="wr-type-tag">Maintenance · Normal</div>
+        </div>
+      </div>
+
+      <!-- Active plan preview -->
+      <div style="background:rgba(255,77,0,0.06);border:0.5px solid var(--border);border-radius:6px;padding:18px;margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <div style="font-size:13px;font-weight:700;letter-spacing:0.5px">Today's HIIT Plan — Alex M.</div>
+          <span style="background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:1px">ACTIVE</span>
+        </div>
+        <div class="wr-exercise-row"><span>Burpees</span><span>4 × 12 · 30s rest</span></div>
+        <div class="wr-exercise-row"><span>Jump Squats</span><span>3 × 15 · 30s rest</span></div>
+        <div class="wr-exercise-row"><span>Mountain Climbers</span><span>3 × 20 · 20s rest</span></div>
+        <div class="wr-exercise-row" style="border:none"><span>Box Jumps</span><span>3 × 10 · 45s rest</span></div>
+        <div style="margin-top:14px;padding-top:14px;border-top:0.5px solid rgba(255,77,0,0.1);display:flex;gap:20px">
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange)">487</div><div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase">Predicted kcal</div></div>
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange)">45</div><div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase">Min Duration</div></div>
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--orange)">High</div><div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase">Intensity</div></div>
+        </div>
+      </div>
+      <div style="background:rgba(255,77,0,0.04);border:0.5px solid var(--border);border-radius:6px;padding:14px;font-size:12px;color:rgba(245,245,245,0.5);line-height:1.6">
+        <i class="ti ti-robot" style="color:var(--orange)"></i> <strong style="color:var(--orange)">NutriAI synced:</strong> Post-session meal recommendation ready — 640 kcal, 52g protein to complete today's energy equation.
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO DEMO: Workout Recommendation -->
+  <div class="live-demo-wrap reveal" style="margin-top:48px">
+    <div class="live-demo-header">
+      <div class="live-demo-dot"></div>
+      <span class="live-demo-label">Live Demo — Workout Recommendation</span>
+      <span class="live-demo-sublabel">Replace src with your video URL</span>
+    </div>
+    <div class="video-demo-slot">
+      <!-- SWAP THIS: <iframe src="https://www.youtube.com/embed/YOUR_WORKOUT_ID" allowfullscreen></iframe> -->
+      <div class="video-demo-placeholder">
+        <div class="vdp-icon"><i class="ti ti-barbell"></i></div>
+        <div class="vdp-title">Workout Recommendation — Demo</div>
+        <div class="vdp-hint">Insert video embed here</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nutri-section">
+  <div class="reveal">
+    <div class="section-tag">NutriAI Chatbot</div>
+    <div class="section-title">Your AI Nutritionist.<br>Always On.</div>
+    <p class="section-sub">NutriAI pairs with your calorie prediction — delivering real-time, personalized meal suggestions that match your burn rate and body goals.</p>
+  </div>
+
+  <!-- VIDEO DEMO: NutriAI -->
+  <div class="live-demo-wrap reveal" style="max-width:860px;margin-top:48px">
+    <div class="live-demo-header">
+      <div class="live-demo-dot"></div>
+      <span class="live-demo-label">NutriAI — Video Demo</span>
+      <span class="live-demo-sublabel">Replace src with your video URL</span>
+    </div>
+    <div class="video-demo-slot">
+      <!-- SWAP THIS: replace with your embed, e.g. <iframe src="https://www.youtube.com/embed/YOUR_ID" allowfullscreen></iframe> -->
+      <div class="video-demo-placeholder">
+        <div class="vdp-icon"><i class="ti ti-player-play-filled"></i></div>
+        <div class="vdp-title">NutriAI Chatbot Demo</div>
+        <div class="vdp-hint">Insert video embed here</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nutri-wrap reveal" style="margin-top:48px">
+    <div class="chat-window">
+      <div class="chat-header">
+        <div class="chat-avatar">🤖</div>
+        <div>
+          <div class="chat-name">NutriAI</div>
+          <div class="chat-status">Online · Nutritional Intelligence Active</div>
+        </div>
+      </div>
+      <div class="chat-body">
+        <div>
+          <div class="msg-label">NutriAI</div>
+          <div class="msg msg-ai">Hi! I've analyzed your session. You burned <strong style="color:var(--orange)">520 calories</strong> today. Want a meal plan to support your fat-loss goal?</div>
+        </div>
+        <div style="align-self:flex-end">
+          <div class="msg msg-user">Yes please, high protein options</div>
+        </div>
+        <div>
+          <div class="msg-label">NutriAI</div>
+          <div class="msg msg-ai">Perfect. Based on your predicted deficit, here's today's recommendation:<br><br>🍗 Grilled chicken breast (200g)<br>🍚 Brown rice (150g)<br>🥦 Steamed broccoli (200g)<br><br>Total: <strong style="color:var(--orange)">640 kcal · 52g protein</strong></div>
+        </div>
+        <div class="nutri-typing"><span></span><span></span><span></span></div>
+      </div>
+      <div class="chat-input">
+        <input type="text" placeholder="Ask NutriAI anything about your nutrition..."/>
+        <button class="chat-send"><i class="ti ti-send"></i></button>
+      </div>
+    </div>
+    <div class="nutri-features">
+      <div class="nf-item">
+        <div class="nf-icon"><i class="ti ti-brain"></i></div>
+        <div>
+          <div class="nf-title">Calorie-Synced Suggestions</div>
+          <div class="nf-desc">NutriAI reads your ML-predicted calorie burn and recommends meals that complete your daily energy equation — no guesswork.</div>
+        </div>
+      </div>
+      <div class="nf-item">
+        <div class="nf-icon"><i class="ti ti-target"></i></div>
+        <div>
+          <div class="nf-title">Goal-Specific Plans</div>
+          <div class="nf-desc">Whether you're cutting fat, building muscle, or maintaining — NutriAI adapts its recommendations to your personal fitness goal.</div>
+        </div>
+      </div>
+      <div class="nf-item">
+        <div class="nf-icon"><i class="ti ti-clock"></i></div>
+        <div>
+          <div class="nf-title">Real-Time Availability</div>
+          <div class="nf-desc">Available 24/7, NutriAI ensures your nutrition is aligned with your training — post-session, rest days, and everything in between.</div>
+        </div>
+      </div>
+      <div class="nf-item">
+        <div class="nf-icon"><i class="ti ti-salad"></i></div>
+        <div>
+          <div class="nf-title">Macro Breakdown</div>
+          <div class="nf-desc">Every meal suggestion includes full macro detail — calories, protein, carbs, and fats — so members understand exactly what they're fueling with.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINER ASSESSMENT -->
+<section class="stats-section">
+  <div class="reveal">
+    <div class="section-tag">Scientific Quality Control</div>
+    <div class="section-title">Trainer Assessment<br>By The Numbers</div>
+    <p class="section-sub">We don't rely on subjective reviews. Trainer quality is measured using a weighted mean average combined with standard deviation — producing a statistically defensible verdict on every trainer.</p>
+  </div>
+  <div class="stats-grid reveal">
+    <div class="stat-block">
+      <div class="stat-big">μ</div>
+      <div class="stat-label2">Weighted Mean Score</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-big">σ</div>
+      <div class="stat-label2">Standard Deviation</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-big">3</div>
+      <div class="stat-label2">Verdicts: Agree · Slight · Disagree</div>
+    </div>
+  </div>
+  <div class="assessment-card reveal">
+    <div class="ac-header">
+      <div class="ac-title">Live Trainer Assessment Dashboard</div>
+      <span style="font-size:11px;color:var(--grey)">Weighted Mean + Std Deviation</span>
+    </div>
+    <div class="trainer-row">
+      <div class="trainer-ava">💪</div>
+      <div class="trainer-name">Marcus Thompson — Senior Trainer</div>
+      <div class="sd-bar"><div class="sd-fill" style="width:92%;background:var(--orange)"></div></div>
+      <div class="trainer-score">4.8</div>
+      <div class="trainer-sd">σ=0.3</div>
+      <span class="ac-badge badge-agree">Agree</span>
+    </div>
+    <div class="trainer-row">
+      <div class="trainer-ava">🏋️</div>
+      <div class="trainer-name">Danielle Rivers — Trainer</div>
+      <div class="sd-bar"><div class="sd-fill" style="width:74%;background:#ffc800"></div></div>
+      <div class="trainer-score">3.7</div>
+      <div class="trainer-sd">σ=0.9</div>
+      <span class="ac-badge badge-slight">Slightly Disagree</span>
+    </div>
+    <div class="trainer-row">
+      <div class="trainer-ava">🤸</div>
+      <div class="trainer-name">Kyle Bennett — Trainer</div>
+      <div class="sd-bar"><div class="sd-fill" style="width:48%;background:#ff4d00"></div></div>
+      <div class="trainer-score">2.4</div>
+      <div class="trainer-sd">σ=1.6</div>
+      <span class="ac-badge badge-disagree">Disagree</span>
+    </div>
+  </div>
+
+  <!-- VIDEO DEMO: View Progress & ML Forecast -->
+  <div class="live-demo-wrap reveal" style="margin-top:24px">
+    <div class="live-demo-header">
+      <div class="live-demo-dot"></div>
+      <span class="live-demo-label">Live Demo — View Progress &amp; ML Forecast</span>
+      <span class="live-demo-sublabel">Replace src with your video URL</span>
+    </div>
+    <div class="video-demo-slot">
+      <!-- SWAP THIS: <iframe src="https://www.youtube.com/embed/YOUR_PROGRESS_ID" allowfullscreen></iframe> -->
+      <div class="video-demo-placeholder">
+        <div class="vdp-icon"><i class="ti ti-chart-line"></i></div>
+        <div class="vdp-title">Progress Tracking &amp; ML Forecast — Demo</div>
+        <div class="vdp-hint">Insert video embed here</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section id="trainers" class="profiles-section">
+  <div class="reveal">
+    <div class="section-tag">Our Team</div>
+    <div class="section-title">The Coaches Behind<br>Your Transformation</div>
+    <p class="section-sub">Every trainer profile is fully managed within the platform — qualifications, specializations, client load, and live assessment scores.</p>
+  </div>
+  <div class="profiles-grid reveal">
+    <div class="profile-card">
+      <div class="profile-img">
+        🏆
+        <span class="senior-badge">Senior Trainer</span>
+      </div>
+      <div class="profile-body">
+        <div class="profile-name">Marcus Thompson</div>
+        <div class="profile-role">Head of Performance</div>
+        <div class="profile-spec">Specializes in body recomposition, HIIT programming, and elite athlete conditioning. 12 years experience.</div>
+        <div class="profile-stats">
+          <div class="ps-item"><div class="ps-num">142</div><div class="ps-label">Clients</div></div>
+          <div class="ps-item"><div class="ps-num">4.8</div><div class="ps-label">Score</div></div>
+          <div class="ps-item"><div class="ps-num">12yr</div><div class="ps-label">Exp</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-img">💪</div>
+      <div class="profile-body">
+        <div class="profile-name">Danielle Rivers</div>
+        <div class="profile-role">Strength & Nutrition Coach</div>
+        <div class="profile-spec">Certified in sports nutrition and powerlifting. Helps members bridge the gap between training and dietary discipline.</div>
+        <div class="profile-stats">
+          <div class="ps-item"><div class="ps-num">88</div><div class="ps-label">Clients</div></div>
+          <div class="ps-item"><div class="ps-num">3.7</div><div class="ps-label">Score</div></div>
+          <div class="ps-item"><div class="ps-num">6yr</div><div class="ps-label">Exp</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-img">🤸</div>
+      <div class="profile-body">
+        <div class="profile-name">Kyle Bennett</div>
+        <div class="profile-role">Functional Movement Coach</div>
+        <div class="profile-spec">Focuses on mobility, injury prevention, and functional fitness — helping members build sustainable, long-term physical health.</div>
+        <div class="profile-stats">
+          <div class="ps-item"><div class="ps-num">54</div><div class="ps-label">Clients</div></div>
+          <div class="ps-item"><div class="ps-num">2.4</div><div class="ps-label">Score</div></div>
+          <div class="ps-item"><div class="ps-num">3yr</div><div class="ps-label">Exp</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE DEMO AREA -->
+  <div class="live-demo-wrap reveal" style="margin-top:16px">
+    <div class="live-demo-header">
+      <div class="live-demo-dot"></div>
+      <span class="live-demo-label">Live Demo — Trainer Dashboard</span>
+      <span class="live-demo-sublabel">Replace src with your video URL</span>
+    </div>
+    <div class="video-demo-slot">
+      <!-- SWAP THIS: <iframe src="https://www.youtube.com/embed/YOUR_TRAINER_ID" allowfullscreen></iframe> -->
+      <div class="video-demo-placeholder">
+        <div class="vdp-icon"><i class="ti ti-users"></i></div>
+        <div class="vdp-title">Trainer Dashboard — Demo</div>
+        <div class="vdp-hint">Insert video embed here</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section class="video-section" style="background:var(--black2)">
+  <div class="reveal">
+    <div class="section-tag">Dynamic Content</div>
+    <div class="section-title">See It In Action</div>
+    <p class="section-sub">Our platform features dynamic, interactive video elements — embedding real workout previews, trainer introductions, and transformation stories inline.</p>
+  </div>
+  <div class="video-grid reveal">
+    <div class="video-tile">
+      <div class="video-thumb">
+        <div class="play-btn"><i class="ti ti-player-play-filled"></i></div>
+        <div class="video-label">Platform Walkthrough</div>
+      </div>
+      <div class="video-overlay">
+        <div class="video-overlay-title">Full Platform Demo</div>
+        <div class="video-overlay-sub">3 min · See every feature live</div>
+      </div>
+    </div>
+    <div class="video-tile">
+      <div class="video-thumb">
+        <div class="play-btn"><i class="ti ti-player-play-filled"></i></div>
+        <div class="video-label">ML Prediction Demo</div>
+      </div>
+      <div class="video-overlay">
+        <div class="video-overlay-title">Body Prediction in Action</div>
+        <div class="video-overlay-sub">90 sec · Real member data</div>
+      </div>
+    </div>
+    <div class="video-tile">
+      <div class="video-thumb">
+        <div class="play-btn"><i class="ti ti-player-play-filled"></i></div>
+        <div class="video-label">NutriAI Live</div>
+      </div>
+      <div class="video-overlay">
+        <div class="video-overlay-title">NutriAI Chatbot Session</div>
+        <div class="video-overlay-sub">60 sec · Real conversation</div>
+      </div>
+    </div>
+    <div class="video-tile">
+      <div class="video-thumb">
+        <div class="play-btn"><i class="ti ti-player-play-filled"></i></div>
+        <div class="video-label">Trainer Dashboard</div>
+      </div>
+      <div class="video-overlay">
+        <div class="video-overlay-title">Trainer View Walkthrough</div>
+        <div class="video-overlay-sub">2 min · Client management</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL FEATURES -->
+<section id="shop" class="features-section">
+  <div class="reveal">
+    <div class="section-tag">Full Platform</div>
+    <div class="section-title">Everything You Need.<br>One Digital Home.</div>
+    <p class="section-sub">Beyond prediction — Gym PRO is a complete fitness lifestyle platform with every feature your members, trainers, and gym needs.</p>
+  </div>
+  <div class="features-grid reveal">
+    <div class="feat-tile">
+      <div class="feat-glow"></div>
+      <div class="feat-icon2"><i class="ti ti-brain"></i></div>
+      <div class="feat-title2">ML Body Prediction</div>
+      <div class="feat-desc2">Forecast weight, BMI, and fat % up to 90 days ahead using supervised gradient boosting regression.</div>
+      <i class="ti ti-arrow-right feat-arrow"></i>
+    </div>
+    <div class="feat-tile">
+      <div class="feat-glow"></div>
+      <div class="feat-icon2"><i class="ti ti-robot"></i></div>
+      <div class="feat-title2">NutriAI Chatbot</div>
+      <div class="feat-desc2">AI nutritional assistant providing personalized meal plans synced to your calorie predictions.</div>
+      <i class="ti ti-arrow-right feat-arrow"></i>
+    </div>
+    <div class="feat-tile">
+      <div class="feat-glow"></div>
+      <div class="feat-icon2"><i class="ti ti-chart-line"></i></div>
+      <div class="feat-title2">Progress Tracking</div>
+      <div class="feat-desc2">Visual dashboards tracking every metric — session by session, week by week, milestone by milestone.</div>
+      <i class="ti ti-arrow-right feat-arrow"></i>
+    </div>
+    <div class="feat-tile">
+      <div class="feat-glow"></div>
+      <div class="feat-icon2"><i class="ti ti-shopping-cart"></i></div>
+      <div class="feat-title2">Online Shop</div>
+      <div class="feat-desc2">Browse and purchase gym essentials — supplements, equipment, and apparel — without leaving the platform.</div>
+      <i class="ti ti-arrow-right feat-arrow"></i>
+    </div>
+    <div class="feat-tile">
+      <div class="feat-glow"></div>
+      <div class="feat-icon2"><i class="ti ti-calendar-event"></i></div>
+      <div class="feat-title2">Consultation Booking</div>
+      <div class="feat-desc2">Book one-on-one sessions with trainers or schedule gym excursions directly through the platform.</div>
+      <i class="ti ti-arrow-right feat-arrow"></i>
+    </div>
+    <div class="feat-tile">
+      <div class="feat-glow"></div>
+      <div class="feat-icon2"><i class="ti ti-layout-dashboard"></i></div>
+      <div class="feat-title2">Admin Dashboard</div>
+      <div class="feat-desc2">Full gym management — memberships, staff oversight, trainer assessments, and business analytics in one view.</div>
+      <i class="ti ti-arrow-right feat-arrow"></i>
+    </div>
+    <div class="feat-tile">
+      <div class="feat-glow"></div>
+      <div class="feat-icon2"><i class="ti ti-users"></i></div>
+      <div class="feat-title2">Trainer Profiles</div>
+      <div class="feat-desc2">Individual trainer dashboards showing client rosters, personal progress, and live assessment scores.</div>
+      <i class="ti ti-arrow-right feat-arrow"></i>
+    </div>
+    <div class="feat-tile">
+      <div class="feat-glow"></div>
+      <div class="feat-icon2"><i class="ti ti-confetti"></i></div>
+      <div class="feat-title2">Happy Birthday Feature</div>
+      <div class="feat-desc2">Automated birthday celebrations for members — building community, unity, and long-term platform loyalty.</div>
+      <i class="ti ti-arrow-right feat-arrow"></i>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="padding-top:0">
+  <div class="services-grid reveal">
+    <!-- GYM SHOP -->
+    <div class="service-card-v2">
+      <div class="sc2-img-placeholder">
+        <!-- Replace with: <img class="sc2-img" src="your-shop-image.jpg" alt="Gym Shop"/> -->
+        <i class="ti ti-shopping-bag sc2-img-icon"></i>
+        <div class="sc2-img-label">Gym Shop · Insert Photo</div>
+      </div>
+      <div class="sc2-body">
+        <div class="sc2-icon-row">
+          <div class="sc2-icon"><i class="ti ti-shopping-bag"></i></div>
+          <div class="sc2-title">Gym Shop</div>
+        </div>
+        <div class="sc2-desc">A fully integrated e-commerce experience — protein, equipment, gear — curated for performance and delivered to your door.</div>
+        <a href="#" class="sc2-btn">Browse Shop <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- BOOK A CONSULTATION -->
+    <div class="service-card-v2">
+      <div class="sc2-img-placeholder">
+        <!-- Replace with: <img class="sc2-img" src="your-consultation-image.jpg" alt="Book a Consultation"/> -->
+        <i class="ti ti-calendar-check sc2-img-icon"></i>
+        <div class="sc2-img-label">Consultation · Insert Photo</div>
+      </div>
+      <div class="sc2-body">
+        <div class="sc2-icon-row">
+          <div class="sc2-icon"><i class="ti ti-calendar-check"></i></div>
+          <div class="sc2-title">Book a Consultation</div>
+        </div>
+        <div class="sc2-desc">Schedule expert one-on-one consultations with certified trainers — in-person or virtual, built into your dashboard.</div>
+        <a href="#" class="sc2-btn">Book Now <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- GYM EXCURSIONS -->
+    <div class="service-card-v2">
+      <div class="sc2-img-placeholder">
+        <!-- Replace with: <img class="sc2-img" src="your-excursion-image.jpg" alt="Gym Excursions"/> -->
+        <i class="ti ti-map-pin sc2-img-icon"></i>
+        <div class="sc2-img-label">Excursions · Insert Photo</div>
+      </div>
+      <div class="sc2-body">
+        <div class="sc2-icon-row">
+          <div class="sc2-icon"><i class="ti ti-map-pin"></i></div>
+          <div class="sc2-title">Gym Excursions</div>
+        </div>
+        <div class="sc2-desc">Group fitness events, outdoor training sessions, and community excursions — all bookable through the platform.</div>
+        <a href="#" class="sc2-btn">Explore Events <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIRTHDAY -->
+<section class="birthday-section reveal">
+  <div class="section-tag">Community & Unity</div>
+  <div class="section-title">We Celebrate You.</div>
+  <p class="section-sub" style="margin:0 auto">Gym PRO isn't just a platform — it's a community. Our Happy Birthday feature automatically celebrates every member, fostering belonging, motivation, and long-term retention.</p>
+  <div class="bday-card">
+    <div class="bday-emoji">🎂</div>
+    <div class="bday-title">Happy Birthday, Alex!</div>
+    <p class="bday-sub">The Gym PRO community is celebrating you today. Keep crushing your goals — your transformation is an inspiration.</p>
+    <div class="bday-members" style="margin-top:20px">
+      <div class="bday-ava">😊</div>
+      <div class="bday-ava">💪</div>
+      <div class="bday-ava">🏋️</div>
+      <div class="bday-ava">🤸</div>
+      <div class="bday-ava" style="background:var(--orange);font-size:12px;font-weight:600;color:#fff">+47</div>
+    </div>
+    <div style="font-size:12px;color:var(--grey);margin-top:10px">51 members sent birthday wishes</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="cta-final reveal">
+  <h2>Lock In.<br>This Summer.</h2>
+  <p>The body you want in 3 months starts with one click today. Join the platform built by intelligence, powered by machine learning, designed for results.</p>
+  <a href="#" class="btn-white"><i class="ti ti-bolt"></i> Get Started with Gym PRO</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">GYM<span>PRO</span></div>
+  <div class="footer-copy">© 2025 Gym PRO. AI-Powered Fitness Intelligence.</div>
+  <div style="display:flex;gap:16px">
+    <a href="#" style="color:var(--grey);text-decoration:none;font-size:12px">Privacy</a>
+    <a href="#" style="color:var(--grey);text-decoration:none;font-size:12px">Terms</a>
+    <a href="#" style="color:var(--grey);text-decoration:none;font-size:12px">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  }, 80);
+});
+document.querySelectorAll('a,button,.feat-tile,.why-block,.profile-card,.service-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '20px';
+    cursor.style.height = '20px';
+    ring.style.width = '50px';
+    ring.style.height = '50px';
+    ring.style.opacity = '0.8';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '12px';
+    cursor.style.height = '12px';
+    ring.style.width = '36px';
+    ring.style.height = '36px';
+    ring.style.opacity = '0.5';
+  });
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if(entry.isIntersecting){
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, {threshold: 0.1});
+reveals.forEach(el => observer.observe(el));
+
+// Animated typing in chat
+const msgs = [
+  "Based on your BMI and goal, I recommend 2500 kcal/day with 40% protein.",
+  "Try: Oats + banana pre-workout, grilled salmon + quinoa post-workout.",
+  "Your fat loss is on track — predicted 2.1kg reduction in 30 days.",
+];
+let msgIndex = 0;
+const chatBody = document.querySelector('.chat-body');
+setInterval(() => {
+  if(chatBody){
+    const div = document.createElement('div');
+    div.innerHTML = `<div class="msg-label">NutriAI</div><div class="msg msg-ai">${msgs[msgIndex % msgs.length]}</div>`;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    msgIndex++;
+    if(chatBody.children.length > 8) chatBody.removeChild(chatBody.firstChild);
+  }
+}, 4000);
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(255,77,0,0.25)' : 'rgba(255,77,0,0.15)';
+});
+</script>
+</body>
+</html>
